@@ -301,7 +301,9 @@ nav:
       - 'Healthcheck APIs': 'ref/healthcheck-APIs.md'
       - 'HTTP Status Codes': 'ref/hTTP-Status-Codes.md'
     - 'Performance Analysis Results': 'ref/performance-analysis-results.md'
-  - '': page-not-found.md
+
+hooks:
+  - hooks/copy_md.py
 
 # Markdown extensions configuration
 markdown_extensions:
