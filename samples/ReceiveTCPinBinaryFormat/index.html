@@ -1,25 +1,3 @@
-<!--
- * Copyright (c) 2023-2024, WSO2 LLC. (https://www.wso2.com).
- *
- * WSO2 LLC. licenses this file to you under the Apache License,
- * Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations
- * under the License.
--->
-
-
-
-
-
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -34,44 +12,43 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://si.docs.wso2.com/">
+        <link rel="canonical" href="https://si.docs.wso2.com/samples/ReceiveTCPinBinaryFormat/">
       
       
+        <link rel="prev" href="../ReceiveMQTTInXMLFormat/">
       
-        <link rel="next" href="overview/overview/">
       
-      <link rel="icon" href="assets/img/favicon.png">
+        <link rel="next" href="../ReceiveKafkaInBinaryFormat/">
+      
+      <link rel="icon" href="../../assets/img/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.2">
     
     
       
-        <title>WSO2 Integrator: SI Documentation - WSO2 Integrator: SI Documentation</title>
+        <title>Receiving Binary Events via TCP - WSO2 Integrator: SI Documentation</title>
       
     
     
-
-      <link rel="stylesheet" href="assets/stylesheets/main.7bf56d0a.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7bf56d0a.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.a0c5b2b5.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
 
     
-<link rel="stylesheet" href="assets/css/home.css">
-
     
     
       
     
     
-      <link rel="stylesheet" href="assets/lib/highlightjs/default.min.css">
+      <link rel="stylesheet" href="../../assets/lib/highlightjs/default.min.css">
     
-      <link rel="stylesheet" href="assets/css/theme.css">
+      <link rel="stylesheet" href="../../assets/css/theme.css">
     
-      <link rel="stylesheet" href="assets/css/copy-page.css">
+      <link rel="stylesheet" href="../../assets/css/copy-page.css">
     
-      <link rel="stylesheet" href="assets/lib/json-formatter/json-formatter.css">
+      <link rel="stylesheet" href="../../assets/lib/json-formatter/json-formatter.css">
     
     <!-- Fix for HTML files loads with wrong resource relative paths when the trailing slash is missing -->
 <script>
@@ -82,7 +59,7 @@
     }
 </script>
 
-<script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 
 <!-- Google Tag Manager -->
 <script>
@@ -109,20 +86,31 @@
 <!-- End Google Tag Manager -->
 
 
-<script src="assets/lib/json-formatter/json-formatter.umd.js"></script>
+<script src="../../assets/lib/json-formatter/json-formatter.umd.js"></script>
 
-<script src="assets/lib/highlightjs/highlight.min.js"></script>
+<script src="../../assets/lib/highlightjs/highlight.min.js"></script>
 
-<script src="assets/js/theme.js"></script>
+<script src="../../assets/js/theme.js"></script>
 
-<script src="assets/js/copy-page.js"></script>
-
-    
-      
+<script src="../../assets/js/copy-page.js"></script>
 
     
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.setAttributeNode(d.createAttribute('data-ot-ignore')); j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5CR98L58');</script>
+<!-- End Google Tag Manager -->
+
     
     
+<meta name="google-site-verification" content="pRwRUP0jDUECheRt5DziuVd3gSs2UTw6EhL4nud3NMk" />
+
+
   </head>
   
   
@@ -143,6 +131,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#purpose" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -174,7 +167,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header" id="page-header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="WSO2 Integrator: SI Documentation"
+    <a href="../.." title="WSO2 Integrator: SI Documentation"
       class="md-header__button md-logo" aria-label="WSO2 Integrator: SI Documentation" data-md-component="logo">
       <!--
  * Copyright (c) 2023, WSO2 LLC. (https://www.wso2.com).
@@ -196,10 +189,10 @@
 
 
     
-        <img src="assets/img/WSO2-logo-black.svg" alt="logo" data-md-component="logo" data-md-color="default">
+        <img src="../../assets/img/WSO2-logo-black.svg" alt="logo" data-md-component="logo" data-md-color="default">
     
     
-        <img src="assets/img/WSO2-logo-white.svg" alt="logo" data-md-component="logo" data-md-color="slate">
+        <img src="../../assets/img/WSO2-logo-white.svg" alt="logo" data-md-component="logo" data-md-color="slate">
     
 
     </a>
@@ -215,12 +208,51 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-            WSO2 Integrator: SI Documentation
+            Receiving Binary Events via TCP
             
           </span>
         </div>
       </div>
     </div>
+    
+    <label class="md-header__button md-icon" for="__search">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+    </label>
+    <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     
     
     <form class="md-header__option" data-md-component="palette">
@@ -379,7 +411,7 @@
  * under the License.
 -->
 
-<link rel="stylesheet" href="assets/css/report-issues.css">
+<link rel="stylesheet" href="../../assets/css/report-issues.css">
 
 <div class="report-issues-fixed">
   <a class="md-typeset md-button md-button--small md-button--flex md-button--report-issues"
@@ -446,7 +478,7 @@
   <!-- Site title -->
   <label class="md-nav__title" for="__drawer">
     <a
-      href="."
+      href="../.."
       title="WSO2 Integrator: SI Documentation"
       class="md-nav__button md-logo"
       aria-label="WSO2 Integrator: SI Documentation"
@@ -472,10 +504,10 @@
 
 
     
-        <img src="assets/img/WSO2-logo-black.svg" alt="logo" data-md-component="logo" data-md-color="default">
+        <img src="../../assets/img/WSO2-logo-black.svg" alt="logo" data-md-component="logo" data-md-color="default">
     
     
-        <img src="assets/img/WSO2-logo-white.svg" alt="logo" data-md-component="logo" data-md-color="slate">
+        <img src="../../assets/img/WSO2-logo-white.svg" alt="logo" data-md-component="logo" data-md-color="slate">
     
 
     </a>
@@ -537,8 +569,6 @@
 
 
 
-
-
 <!-- Set nav icon -->
 
 
@@ -563,26 +593,8 @@
 
 <!-- Main navigation item with nested items -->
 
-<li class="md-nav__item md-nav__item--active">
-  
-
-  <!-- Active checkbox expands items contained within nested section -->
-      <input
-        class="md-nav__toggle md-toggle"
-        type="checkbox"
-        id="__toc"
-      />
-
-      <!-- Hack: see partials/toc.html for more information -->
-      
-      
-
-      <!-- Render table of contents, if not empty -->
-      
-      <a
-        href="."
-        class="md-nav__link md-nav__link--active"
-      >
+<li class="md-nav__item ">
+  <a href="../.." class="md-nav__link">
     <span>
       
       
@@ -598,12 +610,7 @@
     </span>
     
   </a>
-
-  <!-- Show table of contents -->
-  
 </li>
-
-<!-- Main navigation item -->
 
 
     
@@ -815,7 +822,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="overview/overview/" class="md-nav__link">
+  <a href="../../overview/overview/" class="md-nav__link">
     <span>
       
       Introduction
@@ -857,7 +864,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="quick-start-guide/quick-start-guide/" class="md-nav__link">
+  <a href="../../quick-start-guide/quick-start-guide/" class="md-nav__link">
     <span>
       
       Quick Start Guide
@@ -1026,7 +1033,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="quick-start-guide/getting-started/getting-started-guide-overview/" class="md-nav__link">
+  <a href="../../quick-start-guide/getting-started/getting-started-guide-overview/" class="md-nav__link">
     <span>
       
       Streaming Integration Overview
@@ -1068,7 +1075,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="quick-start-guide/getting-started/download-install-and-start-si/" class="md-nav__link">
+  <a href="../../quick-start-guide/getting-started/download-install-and-start-si/" class="md-nav__link">
     <span>
       
       Step 1: Download and Install WSO2 Integrator: SI
@@ -1110,7 +1117,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="quick-start-guide/getting-started/create-the-siddhi-application/" class="md-nav__link">
+  <a href="../../quick-start-guide/getting-started/create-the-siddhi-application/" class="md-nav__link">
     <span>
       
       Step 2: Create the Siddhi Application
@@ -1152,7 +1159,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="quick-start-guide/getting-started/deploy-siddhi-application/" class="md-nav__link">
+  <a href="../../quick-start-guide/getting-started/deploy-siddhi-application/" class="md-nav__link">
     <span>
       
       Step 3: Deploy the Siddhi Application
@@ -1194,7 +1201,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="quick-start-guide/getting-started/test-siddhi-application/" class="md-nav__link">
+  <a href="../../quick-start-guide/getting-started/test-siddhi-application/" class="md-nav__link">
     <span>
       
       Step 4: Run the Siddhi Application
@@ -1236,7 +1243,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="quick-start-guide/getting-started/update-the-siddhi-application/" class="md-nav__link">
+  <a href="../../quick-start-guide/getting-started/update-the-siddhi-application/" class="md-nav__link">
     <span>
       
       Step 5: Update the Siddhi Application
@@ -1278,7 +1285,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="quick-start-guide/getting-started/monitor-statistics/" class="md-nav__link">
+  <a href="../../quick-start-guide/getting-started/monitor-statistics/" class="md-nav__link">
     <span>
       
       Step 6: Monitor Statistics
@@ -1334,7 +1341,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="overview/architecture/" class="md-nav__link">
+  <a href="../../overview/architecture/" class="md-nav__link">
     <span>
       
       Architecture
@@ -1376,7 +1383,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="concepts/concepts/" class="md-nav__link">
+  <a href="../../concepts/concepts/" class="md-nav__link">
     <span>
       
       Key Concepts
@@ -1418,7 +1425,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="get-started/about-this-release/" class="md-nav__link">
+  <a href="../../get-started/about-this-release/" class="md-nav__link">
     <span>
       
       About this Release
@@ -1481,6 +1488,8 @@
 
 
 
+
+
 <!-- Set nav icon -->
 
 
@@ -1533,7 +1542,7 @@
 
 
 <!-- Render item with nested items -->
-<li class="md-nav__item md-nav--expanded-section md-nav--expanded-section-verticle-line md-nav__item--nested md-nav--has-icon ">
+<li class="md-nav__item md-nav__item--active md-nav--expanded-section md-nav--expanded-section-verticle-line md-nav__item--nested md-nav--has-icon ">
   
   
 
@@ -1608,7 +1617,7 @@
         class="md-nav"
         data-md-level="1"
         aria-labelledby="__nav_3_label"
-        aria-expanded="false"
+        aria-expanded="true"
       >
     <label class="md-nav__title" for="__nav_3">
       <span class="md-nav__icon md-icon"></span>
@@ -1775,7 +1784,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/use-cases/" class="md-nav__link">
+  <a href="../../guides/use-cases/" class="md-nav__link">
     <span>
       
       Use Cases Overview
@@ -1817,7 +1826,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/extracting-data-from-static-sources-in-real-time/" class="md-nav__link">
+  <a href="../../guides/extracting-data-from-static-sources-in-real-time/" class="md-nav__link">
     <span>
       
       Extracting Data from Static Sources in Real Time
@@ -1859,7 +1868,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/receiving-data-in-transit/" class="md-nav__link">
+  <a href="../../guides/receiving-data-in-transit/" class="md-nav__link">
     <span>
       
       Receiving Data in Transit
@@ -1901,7 +1910,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/loading-and-writing-date/" class="md-nav__link">
+  <a href="../../guides/loading-and-writing-date/" class="md-nav__link">
     <span>
       
       Loading and Writing Data
@@ -1943,7 +1952,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/publishing-data-to-event-stream-consumers/" class="md-nav__link">
+  <a href="../../guides/publishing-data-to-event-stream-consumers/" class="md-nav__link">
     <span>
       
       Publishing Data
@@ -2110,7 +2119,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/processing-data/" class="md-nav__link">
+  <a href="../../guides/processing-data/" class="md-nav__link">
     <span>
       
       Stream Processing Overview
@@ -2152,7 +2161,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/cleansing-data/" class="md-nav__link">
+  <a href="../../guides/cleansing-data/" class="md-nav__link">
     <span>
       
       Cleansing Data
@@ -2194,7 +2203,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/transforming-data/" class="md-nav__link">
+  <a href="../../guides/transforming-data/" class="md-nav__link">
     <span>
       
       Transforming Data
@@ -2236,7 +2245,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/enriching-data/" class="md-nav__link">
+  <a href="../../guides/enriching-data/" class="md-nav__link">
     <span>
       
       Enriching Data
@@ -2278,7 +2287,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/summarizing-data/" class="md-nav__link">
+  <a href="../../guides/summarizing-data/" class="md-nav__link">
     <span>
       
       Summarizing Data
@@ -2320,7 +2329,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/correlating-data/" class="md-nav__link">
+  <a href="../../guides/correlating-data/" class="md-nav__link">
     <span>
       
       Correlating Data
@@ -2376,7 +2385,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/handling-errors/" class="md-nav__link">
+  <a href="../../guides/handling-errors/" class="md-nav__link">
     <span>
       
       Handling Errors
@@ -2418,7 +2427,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="guides/performing-etl-tasks/" class="md-nav__link">
+  <a href="../../guides/performing-etl-tasks/" class="md-nav__link">
     <span>
       
       Performing ETL Operations
@@ -2605,7 +2614,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="examples/tutorials-overview/" class="md-nav__link">
+  <a href="../../examples/tutorials-overview/" class="md-nav__link">
     <span>
       
       Tutorials Overview
@@ -2647,7 +2656,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="examples/performing-real-time-etl-with-mysql/" class="md-nav__link">
+  <a href="../../examples/performing-real-time-etl-with-mysql/" class="md-nav__link">
     <span>
       
       Performing Real-time ETL with MySQL
@@ -2689,7 +2698,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="examples/performing-real-time-etl-with-files/" class="md-nav__link">
+  <a href="../../examples/performing-real-time-etl-with-files/" class="md-nav__link">
     <span>
       
       Performing Real-time ETL with Files
@@ -2731,7 +2740,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="examples/working-with-kafka/" class="md-nav__link">
+  <a href="../../examples/working-with-kafka/" class="md-nav__link">
     <span>
       
       Working with Kafka
@@ -2773,7 +2782,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="examples/integrating-stores/" class="md-nav__link">
+  <a href="../../examples/integrating-stores/" class="md-nav__link">
     <span>
       
       Integrating Data Stores in Streaming Integration
@@ -2815,7 +2824,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="examples/exposing-processed-data-as-api/" class="md-nav__link">
+  <a href="../../examples/exposing-processed-data-as-api/" class="md-nav__link">
     <span>
       
       Exposing Processed Data as API
@@ -2857,7 +2866,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="examples/handling-requests-with-errors/" class="md-nav__link">
+  <a href="../../examples/handling-requests-with-errors/" class="md-nav__link">
     <span>
       
       Error Handling with Data Streams
@@ -2899,7 +2908,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="examples/triggering-integrations-via-micro-integrator/" class="md-nav__link">
+  <a href="../../examples/triggering-integrations-via-micro-integrator/" class="md-nav__link">
     <span>
       
       Triggering Integrations via MI
@@ -2941,7 +2950,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="examples/running-si-with-docker-and-kubernetes/" class="md-nav__link">
+  <a href="../../examples/running-si-with-docker-and-kubernetes/" class="md-nav__link">
     <span>
       
       Running SI with Docker and Kubernetes
@@ -2972,6 +2981,8 @@
       
 
 <!-- Determine class according to state -->
+
+
 
 
 
@@ -3014,7 +3025,7 @@
 
 
 <!-- Render item with nested items -->
-<li class="md-nav__item md-nav__item--nested  ">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested  ">
   
   
 
@@ -3034,7 +3045,7 @@
       class="md-nav__toggle md-toggle "
       type="checkbox"
       id="__nav_3_3"
-      
+      checked
       
     />
 
@@ -3084,7 +3095,7 @@
         class="md-nav"
         data-md-level="2"
         aria-labelledby="__nav_3_3_label"
-        aria-expanded="false"
+        aria-expanded="true"
       >
     <label class="md-nav__title" for="__nav_3_3">
       <span class="md-nav__icon md-icon"></span>
@@ -3097,6 +3108,8 @@
       
 
 <!-- Determine class according to state -->
+
+
 
 
 
@@ -3139,7 +3152,7 @@
 
 
 <!-- Render item with nested items -->
-<li class="md-nav__item md-nav__item--nested  ">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested  ">
   
   
 
@@ -3159,7 +3172,7 @@
       class="md-nav__toggle md-toggle "
       type="checkbox"
       id="__nav_3_3_1"
-      
+      checked
       
     />
 
@@ -3235,7 +3248,7 @@
         class="md-nav"
         data-md-level="3"
         aria-labelledby="__nav_3_3_1_label"
-        aria-expanded="false"
+        aria-expanded="true"
       >
     <label class="md-nav__title" for="__nav_3_3_1">
       <span class="md-nav__icon md-icon"></span>
@@ -3273,7 +3286,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveTCPinJSONFormat/" class="md-nav__link">
+  <a href="../ReceiveTCPinJSONFormat/" class="md-nav__link">
     <span>
       
       Receiving JSON Events via TCP
@@ -3315,7 +3328,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishGooglePubSubMessagesInTextFormat/" class="md-nav__link">
+  <a href="../PublishGooglePubSubMessagesInTextFormat/" class="md-nav__link">
     <span>
       
       Publishing Events to a Google Pub/Sub Topic
@@ -3357,7 +3370,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/CSVDefaultMapping/" class="md-nav__link">
+  <a href="../CSVDefaultMapping/" class="md-nav__link">
     <span>
       
       Publishing and Receiving CSV Events via Files
@@ -3399,7 +3412,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/CDCWithListeningMode/" class="md-nav__link">
+  <a href="../CDCWithListeningMode/" class="md-nav__link">
     <span>
       
       Capturing MySQL Inserts via CDC
@@ -3441,7 +3454,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveGooglePubSubMessagesInTextFormat/" class="md-nav__link">
+  <a href="../ReceiveGooglePubSubMessagesInTextFormat/" class="md-nav__link">
     <span>
       
       Receiving Messages from a Google Pub/Sub Topic
@@ -3483,7 +3496,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveMQTTInXMLFormat/" class="md-nav__link">
+  <a href="../ReceiveMQTTInXMLFormat/" class="md-nav__link">
     <span>
       
       Receiving XML events via MQTT
@@ -3506,6 +3519,8 @@
 
 
 
+
+
 <!-- Set nav icon -->
 
 
@@ -3524,8 +3539,31 @@
 
 <!-- Main navigation item with nested items -->
 
-<li class="md-nav__item ">
-  <a href="samples/ReceiveTCPinBinaryFormat/" class="md-nav__link">
+<li class="md-nav__item md-nav__item--active">
+  
+
+  <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle"
+        type="checkbox"
+        id="__toc"
+      />
+
+      <!-- Hack: see partials/toc.html for more information -->
+      
+      
+
+      <!-- Render table of contents, if not empty -->
+      
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Receiving Binary Events via TCP
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      
+      <a
+        href="./"
+        class="md-nav__link md-nav__link--active"
+      >
     <span>
       
       Receiving Binary Events via TCP
@@ -3533,7 +3571,64 @@
     </span>
     
   </a>
+
+  <!-- Show table of contents -->
+  
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    Purpose
+  </a>
+  
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-the-sample" class="md-nav__link">
+    Executing the sample
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-sample" class="md-nav__link">
+    Testing the sample
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viewing-the-results" class="md-nav__link">
+    Viewing the results
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+  
+</li>
+
+<!-- Main navigation item -->
 
 
       
@@ -3567,7 +3662,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveKafkaInBinaryFormat/" class="md-nav__link">
+  <a href="../ReceiveKafkaInBinaryFormat/" class="md-nav__link">
     <span>
       
       Receiving Binary Events via Kafka
@@ -3609,7 +3704,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveHTTPInXMLFormatWithDefaultMapping/" class="md-nav__link">
+  <a href="../ReceiveHTTPInXMLFormatWithDefaultMapping/" class="md-nav__link">
     <span>
       
       Receiving XML Events via HTTP
@@ -3651,7 +3746,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/store-influxdb/" class="md-nav__link">
+  <a href="../store-influxdb/" class="md-nav__link">
     <span>
       
       Working with an influxDB Store
@@ -3693,7 +3788,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/CDCWithPollingMode/" class="md-nav__link">
+  <a href="../CDCWithPollingMode/" class="md-nav__link">
     <span>
       
       Capturing MySQL Inserts and Updates via CDC Polling Mode
@@ -3735,7 +3830,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHttpOAuthRequestWithRefreshToken/" class="md-nav__link">
+  <a href="../PublishHttpOAuthRequestWithRefreshToken/" class="md-nav__link">
     <span>
       
       Publishing HTTP Events to an OAuth-protected Endpoint while Using a Refresh Token Grant Type
@@ -3777,7 +3872,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHttpOAuthRequestResponse/" class="md-nav__link">
+  <a href="../PublishHttpOAuthRequestResponse/" class="md-nav__link">
     <span>
       
       Publishing HTTP Events via an OAuth-protected Endpoint
@@ -3819,7 +3914,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/Store-solr/" class="md-nav__link">
+  <a href="../Store-solr/" class="md-nav__link">
     <span>
       
       Receiving Events via Simulator and Persisting in SOLR Store
@@ -3861,7 +3956,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveAndCount/" class="md-nav__link">
+  <a href="../ReceiveAndCount/" class="md-nav__link">
     <span>
       
       Receiving Events via HTTP Transport
@@ -3903,7 +3998,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveEventsFromFile/" class="md-nav__link">
+  <a href="../ReceiveEventsFromFile/" class="md-nav__link">
     <span>
       
       Receiving Events via File
@@ -3945,7 +4040,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveEmailInXmlFormat/" class="md-nav__link">
+  <a href="../ReceiveEmailInXmlFormat/" class="md-nav__link">
     <span>
       
       Receiving XML Events via Email
@@ -3987,7 +4082,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveRabbitmqInJSONFormat/" class="md-nav__link">
+  <a href="../ReceiveRabbitmqInJSONFormat/" class="md-nav__link">
     <span>
       
       Receiving JSON Events via RabbitMQ
@@ -4029,7 +4124,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/Store-cassandra/" class="md-nav__link">
+  <a href="../Store-cassandra/" class="md-nav__link">
     <span>
       
       Receive Events via Simulator and Persist in Cassandra Store
@@ -4268,7 +4363,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHttpOAuthRequest/" class="md-nav__link">
+  <a href="../PublishHttpOAuthRequest/" class="md-nav__link">
     <span>
       
       Publishing HTTP Events to an OAuth-protected Endpoint
@@ -4310,7 +4405,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHttpOAuthRequestWithoutAccessToken/" class="md-nav__link">
+  <a href="../PublishHttpOAuthRequestWithoutAccessToken/" class="md-nav__link">
     <span>
       
       Publishing HTTP Events to an OAuth-protected Endpoint without an Access Token
@@ -4352,7 +4447,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveHl7InER7Format/" class="md-nav__link">
+  <a href="../ReceiveHl7InER7Format/" class="md-nav__link">
     <span>
       
       Receiving ER7 Events via HL7
@@ -4394,7 +4489,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/DataPreprocessing/" class="md-nav__link">
+  <a href="../DataPreprocessing/" class="md-nav__link">
     <span>
       
       Preprocessing Data Received via TCP
@@ -4436,7 +4531,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHl7InER7Format/" class="md-nav__link">
+  <a href="../PublishHl7InER7Format/" class="md-nav__link">
     <span>
       
       Publishing ER7 Events via HL7
@@ -4478,7 +4573,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/SweetProductionDataPreprocessing/" class="md-nav__link">
+  <a href="../SweetProductionDataPreprocessing/" class="md-nav__link">
     <span>
       
       Receiving Data via TCP and Preprocessing
@@ -4520,7 +4615,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/CSVCustomMapping/" class="md-nav__link">
+  <a href="../CSVCustomMapping/" class="md-nav__link">
     <span>
       
       Receiving and Publishing Events in Custom CSV Format
@@ -4562,7 +4657,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHTTPInJsonFormatWithCustomMapping/" class="md-nav__link">
+  <a href="../PublishHTTPInJsonFormatWithCustomMapping/" class="md-nav__link">
     <span>
       
       Sending Custom JSON Events via HTTP
@@ -4604,7 +4699,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishEmailInTextFormat/" class="md-nav__link">
+  <a href="../PublishEmailInTextFormat/" class="md-nav__link">
     <span>
       
       Publishing Text Events via Email
@@ -4646,7 +4741,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveKafkaInTextFormatWithCustomMapping/" class="md-nav__link">
+  <a href="../ReceiveKafkaInTextFormatWithCustomMapping/" class="md-nav__link">
     <span>
       
       Receiving Custom Text Events via Kafka
@@ -4688,7 +4783,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/Script-js-sample/" class="md-nav__link">
+  <a href="../Script-js-sample/" class="md-nav__link">
     <span>
       
       Using Javascript Functions in Siddhi Applications
@@ -4730,7 +4825,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishKafkaInCustomAvroFormat/" class="md-nav__link">
+  <a href="../PublishKafkaInCustomAvroFormat/" class="md-nav__link">
     <span>
       
       Publishing Custom Avro Events via Kafka
@@ -4772,7 +4867,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveHl7InXmlFormat/" class="md-nav__link">
+  <a href="../ReceiveHl7InXmlFormat/" class="md-nav__link">
     <span>
       
       Receiving Custom XML Messages via HL7
@@ -4814,7 +4909,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveTCPInTextFormatWithCustomMapping/" class="md-nav__link">
+  <a href="../ReceiveTCPInTextFormatWithCustomMapping/" class="md-nav__link">
     <span>
       
       Receiving Custom Text Events via TCP
@@ -4856,7 +4951,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/RegexExecutionSample/" class="md-nav__link">
+  <a href="../RegexExecutionSample/" class="md-nav__link">
     <span>
       
       Identifying Sub-sequences in Input Sequences
@@ -4898,7 +4993,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHl7InXmlFormat/" class="md-nav__link">
+  <a href="../PublishHl7InXmlFormat/" class="md-nav__link">
     <span>
       
       Publishing XML messages via HL7
@@ -4940,7 +5035,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishKafkaInJsonFormat/" class="md-nav__link">
+  <a href="../PublishKafkaInJsonFormat/" class="md-nav__link">
     <span>
       
       Publishing JSON Events via Kafka
@@ -4982,7 +5077,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishEventsToFile/" class="md-nav__link">
+  <a href="../PublishEventsToFile/" class="md-nav__link">
     <span>
       
       Publishing JSON Events to Files
@@ -5024,7 +5119,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveHTTPinXMLFormatWithCustomMapping/" class="md-nav__link">
+  <a href="../ReceiveHTTPinXMLFormatWithCustomMapping/" class="md-nav__link">
     <span>
       
       Receiving Custom XML Events via HTTP
@@ -5066,7 +5161,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishRabbitmqInXmlFormat/" class="md-nav__link">
+  <a href="../PublishRabbitmqInXmlFormat/" class="md-nav__link">
     <span>
       
       Publishing XML Events via RabbitMQ
@@ -5108,7 +5203,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/MathExtensionSample/" class="md-nav__link">
+  <a href="../MathExtensionSample/" class="md-nav__link">
     <span>
       
       Rounding up Amounts via the Math Function
@@ -5150,7 +5245,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveTCPinTextFormat/" class="md-nav__link">
+  <a href="../ReceiveTCPinTextFormat/" class="md-nav__link">
     <span>
       
       Receiving Text Events via TCP
@@ -5192,7 +5287,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishEmailInXmlFormat/" class="md-nav__link">
+  <a href="../PublishEmailInXmlFormat/" class="md-nav__link">
     <span>
       
       Publishing Emails in XML Format
@@ -5234,7 +5329,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/StringExtensionSample/" class="md-nav__link">
+  <a href="../StringExtensionSample/" class="md-nav__link">
     <span>
       
       Converting String Values to Lowercase
@@ -5276,7 +5371,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/TextMappingWithInmemoryTransport/" class="md-nav__link">
+  <a href="../TextMappingWithInmemoryTransport/" class="md-nav__link">
     <span>
       
       Text Mapping with In-memory Transport
@@ -5318,7 +5413,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveHTTPInJsonFormatWithDefaultMapping/" class="md-nav__link">
+  <a href="../ReceiveHTTPInJsonFormatWithDefaultMapping/" class="md-nav__link">
     <span>
       
       Receiving JSON Events via HTTP
@@ -5360,7 +5455,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/HelloKafka/" class="md-nav__link">
+  <a href="../HelloKafka/" class="md-nav__link">
     <span>
       
       Consuming Events from a Kafka Topic and Publishing to Another Kafka Topic
@@ -5402,7 +5497,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHttpInXmlFormatWithCustomMapping/" class="md-nav__link">
+  <a href="../PublishHttpInXmlFormatWithCustomMapping/" class="md-nav__link">
     <span>
       
       Publishing Custom XML Events via HTTP
@@ -5444,7 +5539,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/SNMPSetRequestApp/" class="md-nav__link">
+  <a href="../SNMPSetRequestApp/" class="md-nav__link">
     <span>
       
       Sending Custom Keyvalue Events via SNMP
@@ -5486,7 +5581,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishTcpInJsonFormat/" class="md-nav__link">
+  <a href="../PublishTcpInJsonFormat/" class="md-nav__link">
     <span>
       
       Publishing JSON Events via TCP
@@ -5528,7 +5623,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHttpOAuthRequestWithOAuthUser/" class="md-nav__link">
+  <a href="../PublishHttpOAuthRequestWithOAuthUser/" class="md-nav__link">
     <span>
       
       Publishing HTTP Events to an OAuth-protected Endpoint
@@ -5570,7 +5665,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/MapExtensionSample/" class="md-nav__link">
+  <a href="../MapExtensionSample/" class="md-nav__link">
     <span>
       
       Inserting and Accessing Data in a Map
@@ -5612,7 +5707,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishJmsInXmlFormat/" class="md-nav__link">
+  <a href="../PublishJmsInXmlFormat/" class="md-nav__link">
     <span>
       
       Publishing XML Events via JMS
@@ -5654,7 +5749,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveJMSInJsonFormat/" class="md-nav__link">
+  <a href="../ReceiveJMSInJsonFormat/" class="md-nav__link">
     <span>
       
       Receiving JSON Events via JMS
@@ -5696,7 +5791,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveHTTPInJsonFormatWithCustomMapping/" class="md-nav__link">
+  <a href="../ReceiveHTTPInJsonFormatWithCustomMapping/" class="md-nav__link">
     <span>
       
       Receiving Custom JSON Events via HTTP
@@ -5885,7 +5980,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ExtremaBottomK/" class="md-nav__link">
+  <a href="../ExtremaBottomK/" class="md-nav__link">
     <span>
       
       Counting the Frequency of Values with BottomK
@@ -5927,7 +6022,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/GplNLPFindNameEntityType/" class="md-nav__link">
+  <a href="../GplNLPFindNameEntityType/" class="md-nav__link">
     <span>
       
       Extracting Values from a String
@@ -5969,7 +6064,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/JoinWithStoredData/" class="md-nav__link">
+  <a href="../JoinWithStoredData/" class="md-nav__link">
     <span>
       
       Joining Streaming Data with Stored Data in RDBMS
@@ -6011,7 +6106,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/Script-js-sample/" class="md-nav__link">
+  <a href="../Script-js-sample/" class="md-nav__link">
     <span>
       
       Using Javascript Functions in Siddhi Applications
@@ -6053,7 +6148,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/store-hbase/" class="md-nav__link">
+  <a href="../store-hbase/" class="md-nav__link">
     <span>
       
       Receiving Events via Simulator and Persisting in a Store
@@ -6095,7 +6190,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/HttpRequestResponseSample/" class="md-nav__link">
+  <a href="../HttpRequestResponseSample/" class="md-nav__link">
     <span>
       
       Publishing HTTP Requests, Receiving Responses, and Processing Them
@@ -6137,7 +6232,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/UnitConversionExtentionSample/" class="md-nav__link">
+  <a href="../UnitConversionExtentionSample/" class="md-nav__link">
     <span>
       
       Converting Units
@@ -6179,7 +6274,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/execution-geo-sample/" class="md-nav__link">
+  <a href="../execution-geo-sample/" class="md-nav__link">
     <span>
       
       Processing Geo Data
@@ -6221,7 +6316,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ClusTreeTestApp/" class="md-nav__link">
+  <a href="../ClusTreeTestApp/" class="md-nav__link">
     <span>
       
       Performing Streaming Learning Using a Clustree Model
@@ -6263,7 +6358,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveWebSocketInXMLFormat/" class="md-nav__link">
+  <a href="../ReceiveWebSocketInXMLFormat/" class="md-nav__link">
     <span>
       
       Receiving XML Events via Websocket
@@ -6448,7 +6543,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/DataPreprocessing/" class="md-nav__link">
+  <a href="../DataPreprocessing/" class="md-nav__link">
     <span>
       
       Preprocessing Data Received via TCP
@@ -6490,7 +6585,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/SweetProductionDataPreprocessing/" class="md-nav__link">
+  <a href="../SweetProductionDataPreprocessing/" class="md-nav__link">
     <span>
       
       Receiving Data via TCP and Preprocessing
@@ -6532,7 +6627,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishEmailInTextFormat/" class="md-nav__link">
+  <a href="../PublishEmailInTextFormat/" class="md-nav__link">
     <span>
       
       Publishing Text Events via Email
@@ -6574,7 +6669,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/AggregateOverTime/" class="md-nav__link">
+  <a href="../AggregateOverTime/" class="md-nav__link">
     <span>
       
       Calculating Aggregations Over Time
@@ -6616,7 +6711,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveAndCount/" class="md-nav__link">
+  <a href="../ReceiveAndCount/" class="md-nav__link">
     <span>
       
       Receiving Events via HTTP Transport
@@ -6658,7 +6753,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/AggregateDataIncrementally/" class="md-nav__link">
+  <a href="../AggregateDataIncrementally/" class="md-nav__link">
     <span>
       
       Aggregating Data Incrementally
@@ -6700,7 +6795,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/Store-redis/" class="md-nav__link">
+  <a href="../Store-redis/" class="md-nav__link">
     <span>
       
       Receiving Events and Persisting Them in Redis Store
@@ -6742,7 +6837,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/store-mongodb/" class="md-nav__link">
+  <a href="../store-mongodb/" class="md-nav__link">
     <span>
       
       Receiving Events and Persisting in MongoDB Store
@@ -6941,7 +7036,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PmmlModelProcessor/" class="md-nav__link">
+  <a href="../PmmlModelProcessor/" class="md-nav__link">
     <span>
       
       Making Predictions via PMML Model
@@ -6983,7 +7078,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/StreamingRegressor/" class="md-nav__link">
+  <a href="../StreamingRegressor/" class="md-nav__link">
     <span>
       
       Making Predictions via a Regressor Model
@@ -7025,7 +7120,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/GplNLPFindNameEntityType/" class="md-nav__link">
+  <a href="../GplNLPFindNameEntityType/" class="md-nav__link">
     <span>
       
       Extracting Values from a String
@@ -7067,7 +7162,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/TensorFlowTestApp/" class="md-nav__link">
+  <a href="../TensorFlowTestApp/" class="md-nav__link">
     <span>
       
       Performing Regression Tasks via an Imported Tensorflow Model
@@ -7109,7 +7204,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishMqttInXmlFormat/" class="md-nav__link">
+  <a href="../PublishMqttInXmlFormat/" class="md-nav__link">
     <span>
       
       Publishing XML Events via MQTT
@@ -7151,7 +7246,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PatternMatching/" class="md-nav__link">
+  <a href="../PatternMatching/" class="md-nav__link">
     <span>
       
       Identifying Event Patterns Based On Order of Event Arrival
@@ -7193,7 +7288,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/StreamingKMeansSample/" class="md-nav__link">
+  <a href="../StreamingKMeansSample/" class="md-nav__link">
     <span>
       
       Using StreamingML Kmeans for Clustering
@@ -7235,7 +7330,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceivePrometheusMetrics/" class="md-nav__link">
+  <a href="../ReceivePrometheusMetrics/" class="md-nav__link">
     <span>
       
       Receiving Prometheus Metrics
@@ -7277,7 +7372,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/hoeffding-adaptive-tree-sample/" class="md-nav__link">
+  <a href="../hoeffding-adaptive-tree-sample/" class="md-nav__link">
     <span>
       
       Making Predictions via Hoeffding Classifier Model
@@ -7319,7 +7414,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/SNMPGetRequestApp/" class="md-nav__link">
+  <a href="../SNMPGetRequestApp/" class="md-nav__link">
     <span>
       
       Receiving Custom Key Value Events via SNMP
@@ -7361,7 +7456,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveJMSInKeyvalueFormat/" class="md-nav__link">
+  <a href="../ReceiveJMSInKeyvalueFormat/" class="md-nav__link">
     <span>
       
       Receiving Key Value Events via JMS
@@ -7403,7 +7498,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/IBMMessageQueue/" class="md-nav__link">
+  <a href="../IBMMessageQueue/" class="md-nav__link">
     <span>
       
       Consuming Messages from IBM Message Queues
@@ -7445,7 +7540,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/AlertsAndThresholds/" class="md-nav__link">
+  <a href="../AlertsAndThresholds/" class="md-nav__link">
     <span>
       
       Receiving Email Alerts
@@ -7487,7 +7582,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/streaming-perceptron-sample/" class="md-nav__link">
+  <a href="../streaming-perceptron-sample/" class="md-nav__link">
     <span>
       
       Making Predictions via a Streaming Perceptron Model
@@ -7529,7 +7624,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/GeoDistanceCalculation/" class="md-nav__link">
+  <a href="../GeoDistanceCalculation/" class="md-nav__link">
     <span>
       
       Calculating the Distance Between Two Locations
@@ -7736,7 +7831,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishTcpInTextFormat/" class="md-nav__link">
+  <a href="../PublishTcpInTextFormat/" class="md-nav__link">
     <span>
       
       Publishing Text Events via TCP
@@ -7778,7 +7873,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/ReceiveHl7InER7Format/" class="md-nav__link">
+  <a href="../ReceiveHl7InER7Format/" class="md-nav__link">
     <span>
       
       Receiving ER7 Events via HL7
@@ -7820,7 +7915,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishGooglePubSubMessagesInTextFormat/" class="md-nav__link">
+  <a href="../PublishGooglePubSubMessagesInTextFormat/" class="md-nav__link">
     <span>
       
       Publishing Events to a Google Pub/Sub Topic
@@ -7862,7 +7957,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishTcpInBinaryFormat/" class="md-nav__link">
+  <a href="../PublishTcpInBinaryFormat/" class="md-nav__link">
     <span>
       
       Publishing Binary Events via TCP
@@ -7904,7 +7999,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishWebSocketInXmlFormat/" class="md-nav__link">
+  <a href="../PublishWebSocketInXmlFormat/" class="md-nav__link">
     <span>
       
       Publishing XML Events via WebSocket
@@ -7946,7 +8041,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishPrometheusMetricsHTTPServer/" class="md-nav__link">
+  <a href="../PublishPrometheusMetricsHTTPServer/" class="md-nav__link">
     <span>
       
       Publishing Consumed Events to Prometheus Metrics and Exposing then via HTTP
@@ -7988,7 +8083,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/store-influxdb/" class="md-nav__link">
+  <a href="../store-influxdb/" class="md-nav__link">
     <span>
       
       Working with an influxDB Store
@@ -8030,7 +8125,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishKafkaInBinaryFormat/" class="md-nav__link">
+  <a href="../PublishKafkaInBinaryFormat/" class="md-nav__link">
     <span>
       
       Publishing Binary Events via Kafka
@@ -8072,7 +8167,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishJmsInKeyvalueFormat/" class="md-nav__link">
+  <a href="../PublishJmsInKeyvalueFormat/" class="md-nav__link">
     <span>
       
       Publishing Key-value events via JMS
@@ -8114,7 +8209,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHttpInXmlFormat/" class="md-nav__link">
+  <a href="../PublishHttpInXmlFormat/" class="md-nav__link">
     <span>
       
       Publishing XML Events via HTTP
@@ -8156,7 +8251,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHttpOAuthRequestWithRefreshToken/" class="md-nav__link">
+  <a href="../PublishHttpOAuthRequestWithRefreshToken/" class="md-nav__link">
     <span>
       
       Publishing HTTP Events to an OAuth-protected Endpoint while Using a Refresh Token Grant Type
@@ -8198,7 +8293,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHttpOAuthRequestResponse/" class="md-nav__link">
+  <a href="../PublishHttpOAuthRequestResponse/" class="md-nav__link">
     <span>
       
       Publishing HTTP Events via an OAuth-protected Endpoint
@@ -8240,7 +8335,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/Store-solr/" class="md-nav__link">
+  <a href="../Store-solr/" class="md-nav__link">
     <span>
       
       Receiving Events via Simulator and Persisting in SOLR Store
@@ -8282,7 +8377,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishHttpInJsonFormat/" class="md-nav__link">
+  <a href="../PublishHttpInJsonFormat/" class="md-nav__link">
     <span>
       
       Publishing JSON Events via HTTP
@@ -8324,7 +8419,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/Store-rdbms/" class="md-nav__link">
+  <a href="../Store-rdbms/" class="md-nav__link">
     <span>
       
       Receiving Events via Simulator and Persisting in RDBMS Store
@@ -8366,7 +8461,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/Store-cassandra/" class="md-nav__link">
+  <a href="../Store-cassandra/" class="md-nav__link">
     <span>
       
       Receive Events via Simulator and Persist in Cassandra Store
@@ -8408,7 +8503,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/PublishKafkaInAvroFormatUsingSchemaRegistry/" class="md-nav__link">
+  <a href="../PublishKafkaInAvroFormatUsingSchemaRegistry/" class="md-nav__link">
     <span>
       
       Publishing Avro Events via Kafka
@@ -8450,7 +8545,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/AmazonS3SinkSample/" class="md-nav__link">
+  <a href="../AmazonS3SinkSample/" class="md-nav__link">
     <span>
       
       Publishing Aggregated Events to the Amazon AWS S3 Bucket
@@ -8492,7 +8587,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="samples/GCSSinkSample/" class="md-nav__link">
+  <a href="../GCSSinkSample/" class="md-nav__link">
     <span>
       
       Publishing Events to a GCS Bucket
@@ -8974,7 +9069,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/installing-si-in-vm/" class="md-nav__link">
+  <a href="../../setup/installing-si-in-vm/" class="md-nav__link">
     <span>
       
       Install SI
@@ -9016,7 +9111,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/installing-as-a-windows-service/" class="md-nav__link">
+  <a href="../../setup/installing-as-a-windows-service/" class="md-nav__link">
     <span>
       
       Installing as a Windows Service
@@ -9058,7 +9153,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/installing-si-as-a-linux-service/" class="md-nav__link">
+  <a href="../../setup/installing-si-as-a-linux-service/" class="md-nav__link">
     <span>
       
       Installing as a Linux Service
@@ -9114,7 +9209,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="connectors/downloading-and-Installing-Siddhi-Extensions/" class="md-nav__link">
+  <a href="../../connectors/downloading-and-Installing-Siddhi-Extensions/" class="md-nav__link">
     <span>
       
       Installing Siddhi Extensions
@@ -9273,7 +9368,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/installing-si-using-docker/" class="md-nav__link">
+  <a href="../../setup/installing-si-using-docker/" class="md-nav__link">
     <span>
       
       Installing in Docker
@@ -9315,7 +9410,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/installing-si-using-kubernetes/" class="md-nav__link">
+  <a href="../../setup/installing-si-using-kubernetes/" class="md-nav__link">
     <span>
       
       Installing in Kubernetes
@@ -9500,7 +9595,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/upgrading-wso2-ei/" class="md-nav__link">
+  <a href="../../setup/upgrading-wso2-ei/" class="md-nav__link">
     <span>
       
       Upgrading WSO2 Enterprise Integrator
@@ -9679,7 +9774,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/deploying-si-as-a-single-deployment/" class="md-nav__link">
+  <a href="../../setup/deploying-si-as-a-single-deployment/" class="md-nav__link">
     <span>
       
       Single Deployment
@@ -9721,7 +9816,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/deploying-si-as-minimum-ha-cluster/" class="md-nav__link">
+  <a href="../../setup/deploying-si-as-minimum-ha-cluster/" class="md-nav__link">
     <span>
       
       Minimum HA Cluster
@@ -9763,7 +9858,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/deploying-si-as-an-active-active-deployment/" class="md-nav__link">
+  <a href="../../setup/deploying-si-as-an-active-active-deployment/" class="md-nav__link">
     <span>
       
       Active-Active Cluster
@@ -9805,7 +9900,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/deploying-si-as-a-scalable-cluster/" class="md-nav__link">
+  <a href="../../setup/deploying-si-as-a-scalable-cluster/" class="md-nav__link">
     <span>
       
       Scalable Cluster
@@ -9847,7 +9942,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/deploying-si-as-minimum-ha-cluster-in-aws-ecs/" class="md-nav__link">
+  <a href="../../setup/deploying-si-as-minimum-ha-cluster-in-aws-ecs/" class="md-nav__link">
     <span>
       
       Minimum HA Cluster in AWS ECS
@@ -10040,7 +10135,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/production-checklist/" class="md-nav__link">
+  <a href="../../setup/production-checklist/" class="md-nav__link">
     <span>
       
       Production Checklist
@@ -10082,7 +10177,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="setup/configuring-data-sources/" class="md-nav__link">
+  <a href="../../setup/configuring-data-sources/" class="md-nav__link">
     <span>
       
       Configuring Datasources
@@ -10124,7 +10219,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/general-data-protection-regulations/" class="md-nav__link">
+  <a href="../../admin/general-data-protection-regulations/" class="md-nav__link">
     <span>
       
       General Data Protection Regulations
@@ -10166,7 +10261,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/working-with-Keystores/" class="md-nav__link">
+  <a href="../../admin/working-with-Keystores/" class="md-nav__link">
     <span>
       
       Working with Keystores
@@ -10208,7 +10303,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/supporting-different-transports/" class="md-nav__link">
+  <a href="../../admin/supporting-different-transports/" class="md-nav__link">
     <span>
       
       Supporting Different Transports
@@ -10250,7 +10345,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/user-management/" class="md-nav__link">
+  <a href="../../admin/user-management/" class="md-nav__link">
     <span>
       
       User Management
@@ -10292,7 +10387,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/configuring-Database-and-File-System-State-Persistence/" class="md-nav__link">
+  <a href="../../admin/configuring-Database-and-File-System-State-Persistence/" class="md-nav__link">
     <span>
       
       Configuring State Persistence
@@ -10334,7 +10429,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/configuring-Cluster-Coordination/" class="md-nav__link">
+  <a href="../../admin/configuring-Cluster-Coordination/" class="md-nav__link">
     <span>
       
       Configuring Cluster Coordination
@@ -10376,7 +10471,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/protecting-sensitive-data-via-the-secure-vault/" class="md-nav__link">
+  <a href="../../admin/protecting-sensitive-data-via-the-secure-vault/" class="md-nav__link">
     <span>
       
       Protecting Sensitive Data via the Secure Vault
@@ -10418,7 +10513,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/adding-third-party-non-osgi-libraries/" class="md-nav__link">
+  <a href="../../admin/adding-third-party-non-osgi-libraries/" class="md-nav__link">
     <span>
       
       Adding Third Party Non OSGi Library
@@ -10460,7 +10555,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="ref/configuring-default-ports/" class="md-nav__link">
+  <a href="../../ref/configuring-default-ports/" class="md-nav__link">
     <span>
       
       Configuring Default Ports
@@ -10502,7 +10597,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/monitoring-received-events-count-via-logs/" class="md-nav__link">
+  <a href="../../admin/monitoring-received-events-count-via-logs/" class="md-nav__link">
     <span>
       
       Enabling Logs for Received Event Count
@@ -10736,7 +10831,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="develop/developing-streaming-integration-solutions/" class="md-nav__link">
+  <a href="../../develop/developing-streaming-integration-solutions/" class="md-nav__link">
     <span>
       
       Developing WSO2 Integrator: SI Solutions
@@ -10897,7 +10992,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="develop/si-for-vscode-overview/" class="md-nav__link">
+  <a href="../../develop/si-for-vscode-overview/" class="md-nav__link">
     <span>
       
       Overview WSO2 Integrator: SI for VS Code
@@ -10939,7 +11034,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="develop/install-si-for-vscode/" class="md-nav__link">
+  <a href="../../develop/install-si-for-vscode/" class="md-nav__link">
     <span>
       
       Install WSO2 Integrator: SI for VS Code
@@ -10981,7 +11076,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="develop/working-with-the-Design-View/" class="md-nav__link">
+  <a href="../../develop/working-with-the-Design-View/" class="md-nav__link">
     <span>
       
       Working with the Design View
@@ -11037,7 +11132,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="develop/creating-a-Siddhi-Application/" class="md-nav__link">
+  <a href="../../develop/creating-a-Siddhi-Application/" class="md-nav__link">
     <span>
       
       Creating Siddhi Applications
@@ -11079,7 +11174,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="develop/installing-siddhi-extensions/" class="md-nav__link">
+  <a href="../../develop/installing-siddhi-extensions/" class="md-nav__link">
     <span>
       
       Installing Siddhi Extensions
@@ -11121,7 +11216,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="develop/testing-a-Siddhi-Application/" class="md-nav__link">
+  <a href="../../develop/testing-a-Siddhi-Application/" class="md-nav__link">
     <span>
       
       Running and Testing Siddhi Applications
@@ -11163,7 +11258,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="develop/exporting-Siddhi-Applications/" class="md-nav__link">
+  <a href="../../develop/exporting-Siddhi-Applications/" class="md-nav__link">
     <span>
       
       Exporting Siddhi Applications
@@ -11375,7 +11470,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/working-with-integration-control-plane/" class="md-nav__link">
+  <a href="../../admin/working-with-integration-control-plane/" class="md-nav__link">
     <span>
       
       Integration Control Plane
@@ -11538,7 +11633,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/setting-up-grafana-dashboards/" class="md-nav__link">
+  <a href="../../admin/setting-up-grafana-dashboards/" class="md-nav__link">
     <span>
       
       Configuring Dashboards
@@ -11580,7 +11675,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/managing-grafana-dashboards/" class="md-nav__link">
+  <a href="../../admin/managing-grafana-dashboards/" class="md-nav__link">
     <span>
       
       Managing Dashboards
@@ -11757,7 +11852,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/monitoring-si-performance-via-grafana/" class="md-nav__link">
+  <a href="../../admin/monitoring-si-performance-via-grafana/" class="md-nav__link">
     <span>
       
       Overview
@@ -11799,7 +11894,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/viewing-overall-statistics/" class="md-nav__link">
+  <a href="../../admin/viewing-overall-statistics/" class="md-nav__link">
     <span>
       
       Viewing Overall Statistics
@@ -11841,7 +11936,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/viewing-server-statistics/" class="md-nav__link">
+  <a href="../../admin/viewing-server-statistics/" class="md-nav__link">
     <span>
       
       Viewing Server Statistics
@@ -11883,7 +11978,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/viewing-stream-statistics/" class="md-nav__link">
+  <a href="../../admin/viewing-stream-statistics/" class="md-nav__link">
     <span>
       
       Viewing Stream Statistics
@@ -11925,7 +12020,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/viewing-source-statistics/" class="md-nav__link">
+  <a href="../../admin/viewing-source-statistics/" class="md-nav__link">
     <span>
       
       Viewing Source Statistics
@@ -11967,7 +12062,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/viewing-sink-statistics/" class="md-nav__link">
+  <a href="../../admin/viewing-sink-statistics/" class="md-nav__link">
     <span>
       
       Viewing Query Statistics
@@ -12009,7 +12104,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/viewing-window-statistics/" class="md-nav__link">
+  <a href="../../admin/viewing-window-statistics/" class="md-nav__link">
     <span>
       
       Viewing Window Statistics
@@ -12051,7 +12146,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/viewing-trigger-statistics/" class="md-nav__link">
+  <a href="../../admin/viewing-trigger-statistics/" class="md-nav__link">
     <span>
       
       Viewing Trigger Statistics
@@ -12093,7 +12188,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/viewing-table-statistics/" class="md-nav__link">
+  <a href="../../admin/viewing-table-statistics/" class="md-nav__link">
     <span>
       
       Viewing Table Statistics
@@ -12135,7 +12230,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/viewing-aggregation-statistics/" class="md-nav__link">
+  <a href="../../admin/viewing-aggregation-statistics/" class="md-nav__link">
     <span>
       
       Viewing Aggregation Statistics
@@ -12177,7 +12272,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/viewing-on-demand-query-statistics/" class="md-nav__link">
+  <a href="../../admin/viewing-on-demand-query-statistics/" class="md-nav__link">
     <span>
       
       Viewing On Demand Query Statistics
@@ -12233,7 +12328,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="admin/viewing-dashboards/" class="md-nav__link">
+  <a href="../../admin/viewing-dashboards/" class="md-nav__link">
     <span>
       
       Monitoring ETL Flows
@@ -12463,7 +12558,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="connectors/connectors-overview/" class="md-nav__link">
+  <a href="../../connectors/connectors-overview/" class="md-nav__link">
     <span>
       
       WSO2 Integrator: SI Connectors Overview
@@ -12505,7 +12600,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="connectors/downloading-and-Installing-Siddhi-Extensions/" class="md-nav__link">
+  <a href="../../connectors/downloading-and-Installing-Siddhi-Extensions/" class="md-nav__link">
     <span>
       
       Downloading and Installing Siddhi Connectors
@@ -12547,7 +12642,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="connectors/writing-Custom-Siddhi-Extensions/" class="md-nav__link">
+  <a href="../../connectors/writing-Custom-Siddhi-Extensions/" class="md-nav__link">
     <span>
       
       Writing Custom Siddhi Extensions
@@ -12589,7 +12684,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="connectors/configuring-System-Parameters-for-Siddhi-Extensions/" class="md-nav__link">
+  <a href="../../connectors/configuring-System-Parameters-for-Siddhi-Extensions/" class="md-nav__link">
     <span>
       
       Configuring System Parameters for Siddhi Extensions
@@ -12803,7 +12898,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="ref/environment-compatibility/" class="md-nav__link">
+  <a href="../../ref/environment-compatibility/" class="md-nav__link">
     <span>
       
       Environment Compatibility
@@ -12972,7 +13067,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="ref/rest-api-guide-overview/" class="md-nav__link">
+  <a href="../../ref/rest-api-guide-overview/" class="md-nav__link">
     <span>
       
       REST API Guide Overview
@@ -13014,7 +13109,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="ref/siddhi-Application-Management-APIs/" class="md-nav__link">
+  <a href="../../ref/siddhi-Application-Management-APIs/" class="md-nav__link">
     <span>
       
       Siddhi Application Management APIs
@@ -13056,7 +13151,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="ref/permission-apis/" class="md-nav__link">
+  <a href="../../ref/permission-apis/" class="md-nav__link">
     <span>
       
       Permission APIs
@@ -13098,7 +13193,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="ref/business-Rules-APIs/" class="md-nav__link">
+  <a href="../../ref/business-Rules-APIs/" class="md-nav__link">
     <span>
       
       Business Rules APIs
@@ -13140,7 +13235,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="ref/store-APIs/" class="md-nav__link">
+  <a href="../../ref/store-APIs/" class="md-nav__link">
     <span>
       
       Store APIs
@@ -13182,7 +13277,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="ref/healthcheck-APIs/" class="md-nav__link">
+  <a href="../../ref/healthcheck-APIs/" class="md-nav__link">
     <span>
       
       Healthcheck APIs
@@ -13224,7 +13319,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="ref/hTTP-Status-Codes/" class="md-nav__link">
+  <a href="../../ref/hTTP-Status-Codes/" class="md-nav__link">
     <span>
       
       HTTP Status Codes
@@ -13280,7 +13375,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="ref/performance-analysis-results/" class="md-nav__link">
+  <a href="../../ref/performance-analysis-results/" class="md-nav__link">
     <span>
       
       Performance Analysis Results
@@ -13362,7 +13457,7 @@
 <!-- Main navigation item with nested items -->
 
 <li class="md-nav__item ">
-  <a href="page-not-found/" class="md-nav__link">
+  <a href="../../page-not-found/" class="md-nav__link">
     <span>
       
       
@@ -13392,6 +13487,49 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    Purpose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-the-sample" class="md-nav__link">
+    Executing the sample
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-sample" class="md-nav__link">
+    Testing the sample
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viewing-the-results" class="md-nav__link">
+    Viewing the results
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -13399,418 +13537,99 @@
             
           
           
-<div class="md-content">
-  <article class="md-content__inner md-typeset">
-    <div class="md-home-search-container">
-      <h1 class="md-home-search-input-label">WSO2 Integrator: SI Documentation</h1>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
-          </a>
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+  
+    <a href="https://github.com/wso2/docs-si/edit/main/en/docs/samples/ReceiveTCPinBinaryFormat.md" title="Edit this page" class="md-content__button md-icon">
       
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    </div>
-    <div class="description-section"
-      style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 30px;">
-      <p>
-        An advanced stream processing engine that understands streaming SQL queries to capture, analyze, and process
-        streaming data, and allows us to integrate and act on event streams in real-time. WSO2 Integrator: SI allows you
-        to connect any data source to any destination with its 60+ prebuilt, production-grade connectors.
-      </p>
-    </div>
-
-    
-
-    <a href="
-  
-  
-    quick-start-guide/quick-start-guide/
-  
-" rel="noopener" class="quickstart-cta">
-
-      <div class="cta-icon">
-        
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.064 0h.186C15.216 0 16 .784 16 1.75v.186a8.752 8.752 0 0 1-2.564 6.186l-.458.459c-.314.314-.641.616-.979.904v3.207c0 .608-.315 1.172-.833 1.49l-2.774 1.707a.749.749 0 0 1-1.11-.418l-.954-3.102a1.214 1.214 0 0 1-.145-.125L3.754 9.816a1.218 1.218 0 0 1-.124-.145L.528 8.717a.749.749 0 0 1-.418-1.11l1.71-2.774A1.748 1.748 0 0 1 3.31 4h3.204c.288-.338.59-.665.904-.979l.459-.458A8.749 8.749 0 0 1 14.064 0ZM8.938 3.623h-.002l-.458.458c-.76.76-1.437 1.598-2.02 2.5l-1.5 2.317 2.143 2.143 2.317-1.5c.902-.583 1.74-1.26 2.499-2.02l.459-.458a7.25 7.25 0 0 0 2.123-5.127V1.75a.25.25 0 0 0-.25-.25h-.186a7.249 7.249 0 0 0-5.125 2.123ZM3.56 14.56c-.732.732-2.334 1.045-3.005 1.148a.234.234 0 0 1-.201-.064.234.234 0 0 1-.064-.201c.103-.671.416-2.273 1.15-3.003a1.502 1.502 0 1 1 2.12 2.12Zm6.94-3.935c-.088.06-.177.118-.266.175l-2.35 1.521.548 1.783 1.949-1.2a.25.25 0 0 0 .119-.213ZM3.678 8.116 5.2 5.766c.058-.09.117-.178.176-.266H3.309a.25.25 0 0 0-.213.119l-1.2 1.95ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>
-
-
-      </div>
-
-      <div class="cta-content">
-        <span class="cta-title">New to WSO2 Integrator: SI?</span>
-        <span class="cta-desc">Take our quick start guide to build your first streaming application.</span>
-      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/wso2/docs-si/raw/main/en/docs/samples/ReceiveTCPinBinaryFormat.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
 
-    <div class="components-hub-container">
 
-      <div class="components-grid-split">
+  <h1>Receiving Binary Events via TCP</h1>
 
-        <div>
-          <div class="components-section-header">
-            <h2>Get Started</h2>
-            <p>Access introduction and guides.</p>
-          </div>
-          <div class="components-card">
-            <div>
-              <div class="md-column-grid-item-header-icon icon-color-4">
+<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
+<p>This application demonstrates how to configure WSO2 Integrator: SI Tooling to receive events to the SweetProductionStream via TCP transport in binary default format and log the events in LowProductionAlertStream to the output console.</p>
+<h2 id="executing-the-sample">Executing the sample<a class="headerlink" href="#executing-the-sample" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Start the Siddhi application by clicking on 'Run'.</li>
+<li>
+<p>If the Siddhi application starts successfully, the following messages would be shown on the console.</p>
+<ul>
+<li><code>Tcp Server started in 0.0.0.0:9892</code></li>
+<li><code>ReceiveTCPinBinaryFormat.siddhi - Started Successfully!</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="testing-the-sample">Testing the sample<a class="headerlink" href="#testing-the-sample" title="Permanent link">&para;</a></h2>
+<p>Navigate to <code>&lt;SI-Tooling-Home&gt;/samples/sample-clients/tcp-client</code> and run <code>ant</code> command as follows:</p>
+<p>Run <code>ant</code> command in the terminal as follows:</p>
+<div class="highlight"><pre><span></span><code>ant<span class="w"> </span>-Dtype<span class="o">=</span>binary
+</code></pre></div>
+
+<p>If you want to publish custom number of events, you need to run <code>ant</code> command as follows:</p>
+<div class="highlight"><pre><span></span><code>ant<span class="w"> </span>-Dtype<span class="o">=</span>binary<span class="w"> </span>-DnoOfEventsToSend<span class="o">=</span><span class="m">5</span>
+</code></pre></div>
+
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<p>If the message <code>Source Listener has created for url tcp://localhost:9892/SweetProductionStream</code> does not appear,it could be due to the port 9892, defined in the Siddhi application is already being used by a different program. To resolve this issue, please do the following.</p>
+<ul>
+<li>Stop this Siddhi application (Click 'Run' on menu bar -&gt; 'Stop').</li>
+<li>Change the port 9892 to an unused port, in this Siddhi application's source configuration.</li>
+<li>Start the application and check whether the specified messages appear on the console.</li>
+</ul>
+<h2 id="viewing-the-results">Viewing the results<a class="headerlink" href="#viewing-the-results" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2017</span>-12-11<span class="w"> </span><span class="m">15</span>:55:12,682<span class="o">]</span><span class="w">  </span>INFO<span class="w"> </span><span class="o">{</span>io.siddhi.core.stream.output.sink.LogSink<span class="o">}</span><span class="w"> </span>-<span class="w"> </span>ReceiveTCPinBinaryFormat<span class="w"> </span>:<span class="w"> </span>LowProductionAlertStream<span class="w"> </span>:<span class="w"> </span>Event<span class="o">{</span><span class="nv">timestamp</span><span class="o">=</span><span class="m">1512987912665</span>,<span class="w"> </span><span class="nv">data</span><span class="o">=[</span>Cupcake,<span class="w"> </span><span class="m">10</span>.550546580727683<span class="o">]</span>,<span class="w"> </span><span class="nv">isExpired</span><span class="o">=</span>false<span class="o">}</span>
+<span class="o">[</span><span class="m">2017</span>-12-11<span class="w"> </span><span class="m">15</span>:55:13,671<span class="o">]</span><span class="w">  </span>INFO<span class="w"> </span><span class="o">{</span>io.siddhi.core.stream.output.sink.LogSink<span class="o">}</span><span class="w"> </span>-<span class="w"> </span>ReceiveTCPinBinaryFormat<span class="w"> </span>:<span class="w"> </span>LowProductionAlertStream<span class="w"> </span>:<span class="w"> </span>Event<span class="o">{</span><span class="nv">timestamp</span><span class="o">=</span><span class="m">1512987913669</span>,<span class="w"> </span><span class="nv">data</span><span class="o">=[</span>Donut,<span class="w"> </span><span class="m">98</span>.45360926759642<span class="o">]</span>,<span class="w"> </span><span class="nv">isExpired</span><span class="o">=</span>false<span class="o">}</span>
+<span class="o">[</span><span class="m">2017</span>-12-11<span class="w"> </span><span class="m">15</span>:55:14,672<span class="o">]</span><span class="w">  </span>INFO<span class="w"> </span><span class="o">{</span>io.siddhi.core.stream.output.sink.LogSink<span class="o">}</span><span class="w"> </span>-<span class="w"> </span>ReceiveTCPinBinaryFormat<span class="w"> </span>:<span class="w"> </span>LowProductionAlertStream<span class="w"> </span>:<span class="w"> </span>Event<span class="o">{</span><span class="nv">timestamp</span><span class="o">=</span><span class="m">1512987914670</span>,<span class="w"> </span><span class="nv">data</span><span class="o">=[</span>Eclair,<span class="w"> </span><span class="m">48</span>.77465755572478<span class="o">]</span>,<span class="w"> </span><span class="nv">isExpired</span><span class="o">=</span>false<span class="o">}</span>
+<span class="o">[</span><span class="m">2017</span>-12-11<span class="w"> </span><span class="m">15</span>:55:15,672<span class="o">]</span><span class="w">  </span>INFO<span class="w"> </span><span class="o">{</span>io.siddhi.core.stream.output.sink.LogSink<span class="o">}</span><span class="w"> </span>-<span class="w"> </span>ReceiveTCPinBinaryFormat<span class="w"> </span>:<span class="w"> </span>LowProductionAlertStream<span class="w"> </span>:<span class="w"> </span>Event<span class="o">{</span><span class="nv">timestamp</span><span class="o">=</span><span class="m">1512987915671</span>,<span class="w"> </span><span class="nv">data</span><span class="o">=[</span>Froyo,<span class="w"> </span><span class="m">28</span>.209321491656706<span class="o">]</span>,<span class="w"> </span><span class="nv">isExpired</span><span class="o">=</span>false<span class="o">}</span>
+<span class="o">[</span><span class="m">2017</span>-12-11<span class="w"> </span><span class="m">15</span>:55:16,673<span class="o">]</span><span class="w">  </span>INFO<span class="w"> </span><span class="o">{</span>io.siddhi.core.stream.output.sink.LogSink<span class="o">}</span><span class="w"> </span>-<span class="w"> </span>ReceiveTCPinBinaryFormat<span class="w"> </span>:<span class="w"> </span>LowProductionAlertStream<span class="w"> </span>:<span class="w"> </span>Event<span class="o">{</span><span class="nv">timestamp</span><span class="o">=</span><span class="m">1512987916671</span>,<span class="w"> </span><span class="nv">data</span><span class="o">=[</span>Gingerbread,<span class="w"> </span><span class="m">110</span>.46772110205492<span class="o">]</span>,<span class="w"> </span><span class="nv">isExpired</span><span class="o">=</span>false<span class="o">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">@</span><span class="n">App</span><span class="p">:</span><span class="n">name</span><span class="p">(</span><span class="ss">&quot;ReceiveTCPinBinaryFormat&quot;</span><span class="p">)</span>
+<span class="o">@</span><span class="n">App</span><span class="p">:</span><span class="n">description</span><span class="p">(</span><span class="s1">&#39;Receive events via TCP transport in binary format with default mapping and view the output on the console.&#39;</span><span class="p">)</span>
+
+<span class="o">@</span><span class="k">Source</span><span class="p">(</span><span class="k">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;tcp&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="o">=</span><span class="s1">&#39;SweetProductionStream&#39;</span><span class="p">,</span>
+<span class="o">@</span><span class="k">map</span><span class="p">(</span><span class="k">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">))</span>
+<span class="n">define</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="n">SweetProductionStream</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="n">double</span><span class="p">);</span>
+
+<span class="o">@</span><span class="n">sink</span><span class="p">(</span><span class="k">type</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">define</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="n">LowProductionAlertStream</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="n">double</span><span class="p">);</span>
+
+<span class="c1">-- passthrough data in the SweetProductionStream into LowProducitonAlertStream</span>
+<span class="o">@</span><span class="n">info</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;query1&#39;</span><span class="p">)</span>
+<span class="k">from</span><span class="w"> </span><span class="n">SweetProductionStream</span>
+<span class="k">select</span><span class="w"> </span><span class="o">*</span>
+<span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">LowProductionAlertStream</span><span class="p">;</span>
+</code></pre></div>
+
+
+
+
+
                 
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CR98L58" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/><path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.969a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.78a.749.749 0 1 1 1.06-1.06l1.97 1.969Z"/></svg>
-
-
-              </div>
-              <h3>Introduction</h3>
-              <div class="components-card-content">
-                Get started with WSO2 Integrator: SI. Learn the architecture, concepts, and install the runtime.
-              </div>
+              </article>
             </div>
-            <div class="components-card-footer">
-
-              <a href="
-  
-  
-    overview/overview/
-  
-" rel="noopener" class="components-resource-link">
-                Introduction <span>&rarr;</span>
-              </a>
-              <a href="
-  
-  
-    quick-start-guide/quick-start-guide/
-  
-" rel="noopener" class="components-resource-link">
-                Quick Start Guide <span>&rarr;</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="components-section-header">
-            <h2>Set up and Install</h2>
-            <p>Install WSO2 Integrator: SI and configure Siddhi connectors.</p>
-          </div>
-          <div class="components-card">
-            <div>
-              <div class="md-column-grid-item-header-icon icon-color-4">
-                
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
-
-
-              </div>
-              <h3>Installation</h3>
-              <div class="components-card-content">
-                Install the WSO2 Integrator: SI runtime and download Siddhi connectors to get started.
-              </div>
-            </div>
-            <div class="components-card-footer">
-
-              <a href="
-  
-  
-    setup/installing-si-in-vm/
-  
-" rel="noopener"
-                class="components-resource-link">
-                Installing the WSO2 Integrator: SI <span>&rarr;</span>
-              </a>
-              <a href="
-  
-  
-    connectors/downloading-and-Installing-Siddhi-Extensions/
-  
-" rel="noopener" class="components-resource-link">
-                Downloading and Installing Siddhi Connectors <span>&rarr;</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="components-section-header">
-        <h2>Learn</h2>
-        <p>Explore streaming use cases and hands-on tutorials to master real-time data processing.</p>
-      </div>
-
-      <div class="components-grid-2">
-        <div class="components-card">
-          <div>
-            <div class="md-column-grid-item-header-icon icon-color-4">
-              
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM5.78 8.75a9.64 9.64 0 0 0 1.363 4.177c.255.426.542.832.857 1.215.245-.296.551-.705.857-1.215A9.64 9.64 0 0 0 10.22 8.75Zm4.44-1.5a9.64 9.64 0 0 0-1.363-4.177c-.307-.51-.612-.919-.857-1.215a9.927 9.927 0 0 0-.857 1.215A9.64 9.64 0 0 0 5.78 7.25Zm-5.944 1.5H1.543a6.507 6.507 0 0 0 4.666 5.5c-.123-.181-.24-.365-.352-.552-.715-1.192-1.437-2.874-1.581-4.948Zm-2.733-1.5h2.733c.144-2.074.866-3.756 1.58-4.948.12-.197.237-.381.353-.552a6.507 6.507 0 0 0-4.666 5.5Zm10.181 1.5c-.144 2.074-.866 3.756-1.58 4.948-.12.197-.237.381-.353.552a6.507 6.507 0 0 0 4.666-5.5Zm2.733-1.5a6.507 6.507 0 0 0-4.666-5.5c.123.181.24.365.353.552.714 1.192 1.436 2.874 1.58 4.948Z"/></svg>
-
-
-            </div>
-            <h3>Use Cases and Examples</h3>
-            <div class="components-card-content">
-              Discover common streaming integration patterns for data transit, transformations, and ETL workflows.
-            </div>
-          </div>
-          <div class="components-card-footer">
-
-            <a href="
-  
-  
-    guides/use-cases/
-  
-" rel="noopener"
-              class="components-resource-link">
-              Use Cases Overview <span>&rarr;</span>
-            </a>
-            <a href="
-  
-  
-    guides/receiving-data-in-transit/
-  
-" rel="noopener" class="components-resource-link">
-              Data in Transit <span>&rarr;</span>
-            </a>
-            <a href="
-  
-  
-    guides/performing-etl-tasks/
-  
-" rel="noopener" class="components-resource-link">
-              Performing ETL Operations <span>&rarr;</span>
-            </a>
-
-          </div>
-        </div>
-
-        <div>
-          <div class="components-card">
-            <div>
-              <div class="md-column-grid-item-header-icon icon-color-4">
-                
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
-
-
-              </div>
-              <h3>Tutorials</h3>
-              <div class="components-card-content">
-                Step-by-step guides to build streaming applications with Kafka integration and API exposure.
-              </div>
-            </div>
-            <div class="components-card-footer">
-
-              <a href="
-  
-  
-    examples/tutorials-overview/
-  
-" rel="noopener"
-                class="components-resource-link">
-                Tutorials Overview <span>&rarr;</span>
-              </a>
-              <a href="
-  
-  
-    examples/working-with-kafka/
-  
-" rel="noopener" class="components-resource-link">
-                Working with Kafka <span>&rarr;</span>
-              </a>
-              <a href="
-  
-  
-    examples/exposing-processed-data-as-api/
-  
-" rel="noopener"
-                class="components-resource-link">
-                Exposing Processed Data as API <span>&rarr;</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="components-section-header">
-        <h2>Observability and Connectors</h2>
-        <p>Monitor your integrations and connect to various systems.</p>
-      </div>
-
-      <div class="components-grid-2">
-        <div class="components-card">
-          <div>
-            <div class="md-column-grid-item-header-icon icon-color-4">
-              
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"/></svg>
-
-
-            </div>
-            <h3>Observability</h3>
-            <div class="components-card-content">
-              Monitor your integrations with observability tools. Track metrics via dashboards.
-            </div>
-          </div>
-          <div class="components-card-footer">
-            <a href="
-  
-  
-    admin/working-with-integration-control-plane/
-  
-" rel="noopener"
-              class="components-resource-link">
-              Integration Control Plane <span>&rarr;</span>
-            </a>
-          </div>
-          <div class="components-card-footer">
-            <a href="
-  
-  
-    admin/monitoring-si-performance-via-grafana/
-  
-" rel="noopener"
-              class="components-resource-link">
-              Monitoring with Grafana <span>&rarr;</span>
-            </a>
-          </div>
-          <div class="components-card-footer">
-            <a href="
-  
-  
-    admin/viewing-dashboards/
-  
-" rel="noopener" class="components-resource-link">
-              Monitoring ETL Flows <span>&rarr;</span>
-            </a>
-          </div>
-        </div>
-        <div class="components-card">
-          <div>
-            <div class="md-column-grid-item-header-icon icon-color-4">
-              
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4 8H2.5a1 1 0 0 0-1 1v5.25a.75.75 0 0 1-1.5 0V9a2.5 2.5 0 0 1 2.5-2.5H4V5.133a1.75 1.75 0 0 1 1.533-1.737l2.831-.353.76-.913c.332-.4.825-.63 1.344-.63h.782c.966 0 1.75.784 1.75 1.75V4h2.25a.75.75 0 0 1 0 1.5H13v4h2.25a.75.75 0 0 1 0 1.5H13v.75a1.75 1.75 0 0 1-1.75 1.75h-.782c-.519 0-1.012-.23-1.344-.63l-.761-.912-2.83-.354A1.75 1.75 0 0 1 4 9.867Zm6.276-4.91-.95 1.14a.753.753 0 0 1-.483.265l-3.124.39a.25.25 0 0 0-.219.248v4.734c0 .126.094.233.219.249l3.124.39a.752.752 0 0 1 .483.264l.95 1.14a.25.25 0 0 0 .192.09h.782a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25h-.782a.25.25 0 0 0-.192.09Z"/></svg>
-
-
-            </div>
-            <h3>Connectors</h3>
-            <div class="components-card-content">
-              Integrate with various systems using out-of-the-box Siddhi Extensions or build your own custom connectors.
-            </div>
-          </div>
-          <div class="components-card-footer">
-
-            <a href="
-  
-  
-    connectors/connectors-overview/
-  
-" rel="noopener"
-              class="components-resource-link">
-              WSO2 Integrator: SI Connectors Overview <span>&rarr;</span>
-            </a>
-            <a href="
-  
-  
-    connectors/downloading-and-Installing-Siddhi-Extensions/
-  
-" rel="noopener" class="components-resource-link">
-              Downloading and Installing Siddhi Connectors <span>&rarr;</span>
-            </a>
-            <a href="
-  
-  
-    connectors/configuring-System-Parameters-for-Siddhi-Extensions/
-  
-" rel="noopener" class="components-resource-link">
-              Configuring System Parameters for Siddhi Extensions <span>&rarr;</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="components-section-header">
-        <h2>References</h2>
-        <p>System requirements, API guides, and compatibility.</p>
-      </div>
-
-      <div class="components-grid-2">
-        <div class="components-card">
-          <div>
-            <div class="md-column-grid-item-header-icon icon-color-4">
-              
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"/></svg>
-
-
-            </div>
-
-            <h3>Documentation & References</h3>
-            <div class="components-card-content">
-              Access system compatibility, streaming integration REST APIs, and performance results.
-            </div>
-          </div>
-          <div class="components-card-footer">
-
-            <a href="
-  
-  
-    ref/environment-compatibility/
-  
-" rel="noopener" class="components-resource-link">
-              Environment Compatibility <span>&rarr;</span>
-            </a>
-            <a href="
-  
-  
-    ref/rest-api-guide-overview/
-  
-" rel="noopener" class="components-resource-link">
-              REST API Guide <span>&rarr;</span>
-            </a>
-            <a href="
-  
-  
-    ref/performance-analysis-results/
-  
-" rel="noopener" class="components-resource-link">
-              Performance Analysis Results <span>&rarr;</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-</div>
-
+          
           
   <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
 
@@ -13883,7 +13702,7 @@
               href="https://github.com/wso2/product-integrator/issues">Head over to GitHub</a>
           </div>
           <div class="md-footer__meta-section__link md-footer__meta-section__link--composite">
-            <img src="assets/img/WSO2-logo-orange.svg" alt="Enterprise Support" width="28" height="28"
+            <img src="../../assets/img/WSO2-logo-orange.svg" alt="Enterprise Support" width="28" height="28"
               style="vertical-align:middle; margin-right:6px;" />
             <label>Need support?</label><a target="_blank" rel="noopener noreferrer"
               href="https://wso2.com/subscription/">Enterprise Support</a>
@@ -13921,18 +13740,18 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.indexes", "navigation.path", "navigation.top", "navigation.footer", "navigation.instant.progress", "content.code.copy", "content.action.edit", "content.action.view", "content.tabs.link", "search.suggest", "search.share", "versioning"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.path", "navigation.top", "navigation.footer", "navigation.instant.progress", "content.code.copy", "content.action.edit", "content.action.view", "content.tabs.link", "search.suggest", "search.share", "versioning"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.fc8c2696.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fc8c2696.min.js"></script>
       
-        <script src="assets/lib/json-formatter/json-formatter.umd.js"></script>
+        <script src="../../assets/lib/json-formatter/json-formatter.umd.js"></script>
       
-        <script src="assets/lib/highlightjs/highlight.min.js"></script>
+        <script src="../../assets/lib/highlightjs/highlight.min.js"></script>
       
-        <script src="assets/js/theme.js"></script>
+        <script src="../../assets/js/theme.js"></script>
       
-        <script src="assets/js/copy-page.js"></script>
+        <script src="../../assets/js/copy-page.js"></script>
       
     
   </body>
