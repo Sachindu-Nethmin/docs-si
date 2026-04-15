@@ -187,14 +187,17 @@
         };
 
         const handleViewMarkdown = () => {
-            window.open(markdownUrl, '_blank', 'noopener,noreferrer');
+            const pathname = window.location.pathname;
+            const mdPath = (pathname === '/' || pathname === '')
+                ? '/index.md'
+                : pathname.replace(/\/$/, '') + '.md';
+            window.location.href = window.location.origin + mdPath;
             setOpen(false);
         };
 
         const handleOpenInChatGPT = () => {
             // Uses HTML URL
-            // Note: ChatGPT URL with ?q= may not pre-populate; external AI site URLs are fragile
-            window.open(`https://chat.openai.com/?q=${encodeURIComponent(getPromptWithHtml())}`, '_blank', 'noopener,noreferrer');
+            window.open(`https://chat.openai.com/?q=${encodeURIComponent(getPromptWithHtml())}`, '_blank');
             setOpen(false);
         };
 
@@ -208,7 +211,7 @@
 
         const handleOpenInPerplexity = () => {
             // Uses Markdown URL with proper /search endpoint
-            window.open(`https://www.perplexity.ai/search?q=${encodeURIComponent(getPromptWithMarkdown())}`, '_blank', 'noopener,noreferrer');
+            window.open(`https://www.perplexity.ai/search?q=${encodeURIComponent(getPromptWithMarkdown())}`, '_blank');
             setOpen(false);
         };
 
@@ -238,21 +241,28 @@
         // 1. Determine URL
         if (editButton) {
             rawUrl = editButton.href
-                .replace('github.com', 'raw.githubusercontent.com')
-                .replace('/edit/', '/')
-                .replace('/blob/', '/');
+                .replace(/github\.com/g, 'raw.githubusercontent.com')
+                .replace(/\/edit\//g, '/')
+                .replace(/\/blob\//g, '/');
         } else if (viewButton) {
             rawUrl = viewButton.href
-                .replace('github.com', 'raw.githubusercontent.com')
-                .replace('/blob/', '/') // View might be blob, we want raw
-                .replace('/raw/', '/'); // If already raw, check structure
+                .replace(/github\.com/g, 'raw.githubusercontent.com')
+                .replace(/\/blob\//g, '/') // View might be blob, we want raw
+                .replace(/\/raw\//g, '/'); // If already raw, check structure
         } else {
-            // Fallback for homepage
-            const homePageSearch = document.querySelector('.md-home-search-container');
-            if (homePageSearch) {
-                rawUrl = 'https://raw.githubusercontent.com/wso2/docs-si/main/en/docs/index.md';
-                // Try to find ANY button to append next to
-                insertionPoint = document.querySelector('.md-content__button');
+            // No easy way to get raw URL without edit/view buttons
+            // We will attempt to derive it from the current URL if possible
+            const siteUrl = 'https://si.docs.wso2.com/en/latest/';
+            const repoRawUrl = 'https://raw.githubusercontent.com/wso2/docs-si/main/en/docs/';
+            
+            if (window.location.href.startsWith(siteUrl)) {
+                let relPath = window.location.href.substring(siteUrl.length);
+                if (relPath.endsWith('/') || relPath === '') {
+                    relPath += 'index.md';
+                } else {
+                    relPath = relPath.replace(/\.html$/, '.md');
+                }
+                rawUrl = repoRawUrl + relPath;
             }
         }
 
@@ -290,7 +300,7 @@
     }
 
     // Observer for instant loading
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(() => {
         if (document.querySelector('.md-content') && !document.querySelector('.copy-page-container')) {
             init();
         }
